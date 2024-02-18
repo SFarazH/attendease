@@ -1,0 +1,254 @@
+{% block content %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  {% load static %}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'result.css' %}" />
+</head>
+{% if nullData %}
+
+<div class="container-fluid">
+  <div class="mt-4 row errorDiv">
+    <div class="logoImg logo col-xl-3 col-lg-4 col-md-4 col-sm-12 text-center">
+      <img
+        src="{% static 'img/finalbg.png' %}"
+        class="img-fluid brand-logo logoImg mb-4"
+        alt="AttendEase Logo"
+      />
+    </div>
+    <div
+      class="col-xl-6 col-lg-8 col-md-8 col-sm-12 text-center mb-0 noDataDiv"
+    >
+      <div class="card">
+        <div class="card-content finakCardError">
+          <h3>Error 204</h3>
+          <span>No Data Found</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+<div class="container-fluid">
+  <div class="row mt-4 m-2 mb-3">
+    <div class="logoImg logo col-xl-3 col-lg-4 col-md-4 col-sm-12 text-center">
+      <img
+        src="{% static 'img/finalbg.png' %}"
+        class="img-fluid brand-logo logoImg mb-4"
+        alt="AttendEase Logo"
+      />
+    </div>
+    <div
+      class="finakCard col-xl-6 col-lg-8 col-md-8 col-sm-12 text-center mt-2"
+    >
+      <div class="card">
+        <div class="card-content">
+          <div
+            class="card-body pb-1"
+            style="padding-left: 10px; padding-right: 10px"
+          >
+            <div class="media d-flex">
+              <div class="media-body text-left">
+                <p class="h2 success1 percentage pFinal">{{percentFinal}} %</p>
+              </div>
+              <div class="align-self-top float-right">
+                <p class="h4 float-right countFinal">{{countFinal}}</p>
+              </div>
+            </div>
+
+            <div class="progress mt-3 mb-0" style="height: 7px">
+              <div
+                class="progress-bar bg-success"
+                role="progressbar"
+                style="width: {{percentFinal}}%"
+                aria-valuenow=""
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <p class="textFinal font-medium-1 mt-2 mb-2"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<body>
+  <div class="grey-bg container-fluid">
+    <section>
+      <div class="row m-2">
+        {% for row in table %}
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card">
+            <div class="card-content">
+              <div
+                class="card-body"
+                style="padding-left: 10px; padding-right: 10px"
+              >
+                <div class="media d-flex">
+                  <div class="media-body text-left">
+                    <p class="h2 percentage">{{row.Percentage}} %</p>
+                  </div>
+                  <div class="align-self-top">
+                    <p class="h3 float-right count">{{row.Count}}</p>
+                  </div>
+                </div>
+                <span class="font-medium-2">{{row.Name}}</span>
+                <div class="progress mt-3 mb-0" style="height: 7px">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: {{row.Percentage}}%"
+                    aria-valuenow=""
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <div class="graphs row mt-3 mb-0 d-flex">
+                  <p class="h4 bi bi-graph-up-arrow success1 col-6 attend"></p>
+                  <p
+                    class="h4 bi bi-graph-down-arrow danger col-6 text-right miss"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="social rounded">
+      <a href="https://github.com/SFarazH" target="_blank"
+        ><i class="fab fa-github githubPC"></i
+      ></a>
+      <p class="socialTxt">Code by Faraz Hasan</p>
+
+      <div>
+        <a href="https://github.com/SFarazH" target="_blank"
+          ><i class="fab fa-github githubMob"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/syed-faraz-hasan" target="_blank"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+<script>
+  count = document.querySelectorAll(".count");
+  var num, den;
+
+  for (var i = 0; i < count.length; i++) {
+    count[i].textContent;
+    num = parseInt(count[i].textContent.split("/")[0]);
+    den = parseInt(count[i].textContent.split("/")[1]);
+
+    function atclass(num, den) {
+      num = num + 1;
+      den = den + 1;
+      return parseFloat((num / den) * 100).toFixed(1);
+    }
+
+    function missclass(num, den) {
+      num = num;
+      den = den + 1;
+      return parseFloat((num / den) * 100).toFixed(1);
+    }
+
+    document.querySelectorAll(".attend")[i].textContent =
+      " " + atclass(num, den) + "%";
+    document.querySelectorAll(".miss")[i].textContent =
+      " " + missclass(num, den) + "%";
+  }
+
+  percentage = document.querySelectorAll(".percentage");
+  bar = document.querySelectorAll(".progress-bar");
+
+  for (var i = 0; i < percentage.length; i++) {
+    percent = parseFloat(percentage[i].textContent);
+
+    if (percent < 60) {
+      bar[i].classList.add("bg-danger");
+      percentage[i].classList.add("danger");
+    } else if ((percent > 60) & (percent < 75)) {
+      bar[i].classList.add("bg-warning");
+      percentage[i].classList.add("warning");
+    } else {
+      bar[i].classList.add("bg-success");
+      percentage[i].classList.add("success1");
+    }
+  }
+
+  finalPercent = parseInt(document.querySelector(".pFinal").textContent);
+  if (finalPercent < 60) {
+    txt = "Consider attending some classes!";
+  } else if ((finalPercent > 60) & (finalPercent <= 75)) {
+    txt = "Keep those medical certificates ready!";
+  } else if ((finalPercent > 75) & (finalPercent <= 85)) {
+    txt = "Don't worry, you're safe!";
+  } else if (finalPercent > 85) {
+    txt = "Why dont you take a few days off!";
+  }
+
+  document.querySelector(".textFinal").innerText = txt;
+</script>
+
+{%endif %} {% endblock %}

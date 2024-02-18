@@ -1,0 +1,75 @@
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AttendEase</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <form
+            action="{% url 'displayAttendance' %}"
+            method="post"
+            class="shadow pt-3 rounded inputForm"
+          >
+            <img
+              src="{% static 'img/finalbg.png' %}"
+              class="img-fluid brand-logo logoImg mx-auto mb-4"
+              alt="AttendEase Logo"
+            />
+
+            <p class='username'>{{username}}</p>
+
+            <div>{% csrf_token %} {{form}}</div>
+            <input type="hidden" name="cookies" value="{{ cookies}}" />
+
+            
+
+            <button type="submit" class="submitBtn mt-1">SUBMIT</button>
+            <div class="social mt-3 rounded">
+              <p class="socialTxt">
+                Code by
+                <a
+                  href="https://www.linkedin.com/in/syed-faraz-hasan"
+                  ,
+                  target="_blank"
+                  >Faraz</a
+                >
+              </p>
+              <a href="https://github.com/SFarazH" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/syed-faraz-hasan"
+                ,
+                target="_blank"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}
