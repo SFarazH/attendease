@@ -39,6 +39,9 @@ def loginRCOEM(driver, username, password):
     addInput(driver, By.ID, 'j_username', username)
     addInput(driver, By.ID, 'password-1', password)
     clickButton(driver, By.CLASS_NAME, 'btn.btn-primary.btn-block.customB.mt-3')
+    return username
+
+
     
 # def get_attendance(driver):
 #     click_button(driver, By.ID,'attendencePer')
@@ -63,7 +66,7 @@ def getAttendance(jsonFile, sem):
     data = []
 
     totalPresent, totalAbsent, percent, finalCount =0,0,0,0
-
+    # print(jsonFile.json())
     for i in range(len(jsonFile.json())):
         if jsonFile.json()[i]['termId'] == sem:
             sub = jsonFile.json()[i]['subject']
