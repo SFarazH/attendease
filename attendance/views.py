@@ -16,6 +16,8 @@ from bs4 import BeautifulSoup
 from django import forms
 import ast
 
+# f = open("./data.txt", "r")
+# print(f.read())
 
 def index(request):
     context={}
@@ -125,7 +127,7 @@ def displayAttendance(request):
         attendancdeJSON = requests.get('https://rcoem.in/getSubjectOnChangeWithSemId1.json?', headers = {'accept': 'application/json', 'Cookie':'JSESSIONID='+cookies_list[0]['value']})
         
         table,percent,count = getAttendance(attendancdeJSON, sem)
-        # print(table)
+        print(table)
         if len(table)!=0:    
           context = {'table':table, 'percentFinal':  percent, 'countFinal':count}
         else:

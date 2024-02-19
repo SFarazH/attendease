@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics, getAnalytics } from "firebase/analytics";
 
-console.log("firebase");
 const firebaseConfig = {
   apiKey: "AIzaSyAJAFZOlRw1YNDyOCV1Yv3W9EOURWgOboM",
   authDomain: "attendease-96875.firebaseapp.com",
@@ -12,11 +11,5 @@ const firebaseConfig = {
   measurementId: "G-P1KLBXZSHR",
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics();
 
-logEvent(analytics, "notification_received");
-
-// const analytics = getAnalytics();
 // logEvent(analytics, "notification_received");
