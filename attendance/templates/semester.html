@@ -42,6 +42,7 @@
 
             <div>{% csrf_token %} {{form}}</div>
             <input type="hidden" name="cookies" value="{{ cookies}}" />
+            <input type="hidden" name="userID" value="{{ username}}" />
 
             <button type="submit" class="submitBtn mt-1">SUBMIT</button>
             <div class="social mt-3 rounded">

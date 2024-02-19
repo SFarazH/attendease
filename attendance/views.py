@@ -41,6 +41,7 @@ def loginRCOEM(driver, username, password):
     addInput(driver, By.ID, 'j_username', username)
     addInput(driver, By.ID, 'password-1', password)
     clickButton(driver, By.CLASS_NAME, 'btn.btn-primary.btn-block.customB.mt-3')
+    return username
     
 # def get_attendance(driver):
 #     click_button(driver, By.ID,'attendencePer')
@@ -120,6 +121,7 @@ def displayAttendance(request):
     if request.method == 'POST':
       semform = semForm(request.POST)
       cookiesStr  =request.POST.get('cookies')
+      userID  =request.POST.get('userID')
       # print(cookiesStr)
       if semform.is_valid():
         cookies_list = ast.literal_eval(cookiesStr)
@@ -127,9 +129,9 @@ def displayAttendance(request):
         attendancdeJSON = requests.get('https://rcoem.in/getSubjectOnChangeWithSemId1.json?', headers = {'accept': 'application/json', 'Cookie':'JSESSIONID='+cookies_list[0]['value']})
         
         table,percent,count = getAttendance(attendancdeJSON, sem)
-        print(table)
+        # print(table)
         if len(table)!=0:    
-          context = {'table':table, 'percentFinal':  percent, 'countFinal':count}
+          context = {'table':table, 'percentFinal':  percent, 'countFinal':count, 'userID': userID}
         else:
           context = {'nullData':'No data to display'}
         return render(request, "result.html", context)
