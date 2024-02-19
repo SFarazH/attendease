@@ -69,6 +69,30 @@
       </div>
     </div>
 
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAJAFZOlRw1YNDyOCV1Yv3W9EOURWgOboM",
+        authDomain: "attendease-96875.firebaseapp.com",
+        projectId: "attendease-96875",
+        storageBucket: "attendease-96875.appspot.com",
+        messagingSenderId: "80053895846",
+        appId: "1:80053895846:web:06a0b8d00acf27e0ca6a67",
+        measurementId: "G-P1KLBXZSHR",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      {% comment %} analytics.logEvent(analytics, "notification_received"); {% endcomment %}
+    </script>
     <script>
       var form = document.getElementById("inputForm");
       var spinner = document.getElementById("spinnerDiv");
@@ -79,10 +103,6 @@
         overlay.classList.add("overlay");
         console.log("ok");
       });
-      /*button.addEventListener("click", () => {
-        spinnerSpan.classList.add("spinner-border");
-        overlay.classList.add("overlay");
-      });*/
     </script>
   </body>
 </html>
