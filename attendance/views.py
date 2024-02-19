@@ -39,7 +39,6 @@ def loginRCOEM(driver, username, password):
     addInput(driver, By.ID, 'j_username', username)
     addInput(driver, By.ID, 'password-1', password)
     clickButton(driver, By.CLASS_NAME, 'btn.btn-primary.btn-block.customB.mt-3')
-    print(password)
     
 # def get_attendance(driver):
 #     click_button(driver, By.ID,'attendencePer')

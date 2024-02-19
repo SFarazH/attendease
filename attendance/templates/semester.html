@@ -38,9 +38,7 @@
               alt="AttendEase Logo"
             />
 
-            {% comment %}
             <p class="username">{{username}}</p>
-            {% endcomment %}
 
             <div>{% csrf_token %} {{form}}</div>
             <input type="hidden" name="cookies" value="{{ cookies}}" />
