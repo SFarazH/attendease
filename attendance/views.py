@@ -15,9 +15,18 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from django import forms
 import ast
+from datetime import date, datetime
+from .models import User
+
 
 # f = open("./data.txt", "r")
 # print(f.read())
+
+
+# user1 = Users(userID = 'syedfarazhasan1@gmail.com')
+
+# user1.create(userID = 'hasansf_1')
+# print(user1.objects.all())
 
 def index(request):
     context={}
@@ -112,6 +121,8 @@ def loginDetails(request):
               context = {'cookies':cookies}
               context['form'] = semForm()
               context['username'] = usernameID
+              user = User(userID = username)
+              user.save()
               
             #   print(cookies)
             driver.quit()
