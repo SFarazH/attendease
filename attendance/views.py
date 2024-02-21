@@ -18,16 +18,6 @@ import ast
 from datetime import date, datetime
 from .models import User
 
-
-# f = open("./data.txt", "r")
-# print(f.read())
-
-
-# user1 = Users(userID = 'syedfarazhasan1@gmail.com')
-
-# user1.create(userID = 'hasansf_1')
-# print(user1.objects.all())
-
 def index(request):
     context={}
     context['form'] = LoginForm()
