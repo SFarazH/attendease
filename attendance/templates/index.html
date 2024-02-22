@@ -57,6 +57,10 @@
               SUBMIT
             </button>
 
+            <button type="button" id="demoBtn" class="spinner-button mt-1">
+              Demo
+            </button>
+
             <div class="social mt-3 rounded">
               <p class="socialTxt">Code by Faraz Hasan</p>
               <a href="https://github.com/SFarazH" target="_blank"
@@ -74,34 +78,17 @@
       </div>
     </div>
 
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyAJAFZOlRw1YNDyOCV1Yv3W9EOURWgOboM",
-        authDomain: "attendease-96875.firebaseapp.com",
-        projectId: "attendease-96875",
-        storageBucket: "attendease-96875.appspot.com",
-        messagingSenderId: "80053895846",
-        appId: "1:80053895846:web:06a0b8d00acf27e0ca6a67",
-        measurementId: "G-P1KLBXZSHR",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-      {% comment %} analytics.logEvent(analytics, "notification_received"); {% endcomment %}
-    </script>
     <script>
       var form = document.getElementById("inputForm");
       var spinner = document.getElementById("spinnerDiv");
       var overlay = document.getElementById("overlay");
+
+      document.getElementById("demoBtn").addEventListener("click", demo);
+
+      function demo() {
+        document.getElementById("userID").value = "demo@rknec.edu";
+        document.getElementById("password").value = "demo@rknec.edu";
+      }
 
       form.addEventListener("submit", () => {
         spinner.classList.add("spinner-border");

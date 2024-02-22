@@ -18,6 +18,17 @@ import ast
 from datetime import date, datetime
 from .models import User
 
+demoData=[
+{'Name': 'Chemistry', 'Count': '37/41', 'Percentage': 90.24},
+{'Name': 'Chemistry Lab', 'Count': '7/7', 'Percentage': 100.0},
+{'Name': 'Object Oriented Programming', 'Count': '29/35', 'Percentage': 82.86},
+{'Name': 'Object Oriented Programming Lab', 'Count': '7/9', 'Percentage': 77.78},
+{'Name': 'Operating Systems', 'Count': '27/33', 'Percentage': 81.82},
+{'Name': 'Operating Systems Lab', 'Count': '20/20', 'Percentage': 100.0},
+{'Name': 'Systems Lab-II', 'Count': '13/15', 'Percentage': 86.67},
+{'Name': 'Data Science Programming Languages', 'Count': '29/34', 'Percentage': 85.29}
+]
+
 def index(request):
     context={}
     context['form'] = LoginForm()
@@ -94,45 +105,55 @@ def loginDetails(request):
         if loginform.is_valid():
             username = loginform.cleaned_data.get('username')
             password = loginform.cleaned_data.get('password')
-            options = webdriver.ChromeOptions()
-            prefs = {"profile.managed_default_content_settings.images": 2}
-            options.add_experimental_option("prefs", prefs)
-            options.add_argument('--headless')
-            chrome_driver_path = ChromeDriverManager().install()
-            driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
-            driver.get("https://rcoem.in/login.htm")
-
-            usernameID = loginRCOEM(driver, username, password)
             
-            if 'failure=true' in driver.current_url:
-              return redirect('error_page')
-            else:
-              cookies = driver.get_cookies()
-              context = {'cookies':cookies}
-              context['form'] = semForm()
-              context['username'] = usernameID
-              user = User(userID = username)
-              user.save()
-              
-            #   print(cookies)
-            driver.quit()
-            return render(request, 'semester.html', context)
+            if(username == 'demo@rknec.edu' and password == 'demo@rknec.edu'):
+                context = {'username':username, 'demo':True, 'cookies' : None}
+            else:    
+                options = webdriver.ChromeOptions()
+                prefs = {"profile.managed_default_content_settings.images": 2}
+                options.add_experimental_option("prefs", prefs)
+                options.add_argument('--headless')
+                chrome_driver_path = ChromeDriverManager().install()
+                driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
+                driver.get("https://rcoem.in/login.htm")
+
+                usernameID = loginRCOEM(driver, username, password)
+            
+                if 'failure=true' in driver.current_url:
+                    return redirect('error_page')
+                else:
+                    cookies = driver.get_cookies()
+                    context = {'cookies':cookies}
+                    context['form'] = semForm()
+                    context['demo'] = False
+                    context['username'] = usernameID
+                    user = User(userID = username)
+                    user.save()
+                    #   print(cookies)
+                driver.quit()
+    return render(request, 'semester.html', context)
 
 def displayAttendance(request):
     if request.method == 'POST':
-      semform = semForm(request.POST)
-      cookiesStr  =request.POST.get('cookies')
-      userID  =request.POST.get('userID')
-      # print(cookiesStr)
-      if semform.is_valid():
-        cookies_list = ast.literal_eval(cookiesStr)
-        sem = int(semform.cleaned_data['semester'])
-        attendancdeJSON = requests.get('https://rcoem.in/getSubjectOnChangeWithSemId1.json?', headers = {'accept': 'application/json', 'Cookie':'JSESSIONID='+cookies_list[0]['value']})
-        
-        table,percent,count = getAttendance(attendancdeJSON, sem)
-        # print(table)
-        if len(table)!=0:    
-          context = {'table':table, 'percentFinal':  percent, 'countFinal':count, 'userID': userID}
+        demo  =request.POST.get('demo')
+        if not demo:
+            semform = semForm(request.POST)
+            cookiesStr  =request.POST.get('cookies')
+            userID  =request.POST.get('userID')
+            # print(cookiesStr)
+            if semform.is_valid():
+                cookies_list = ast.literal_eval(cookiesStr)
+                sem = int(semform.cleaned_data['semester'])
+                attendancdeJSON = requests.get('https://rcoem.in/getSubjectOnChangeWithSemId1.json?', headers = {'accept': 'application/json', 'Cookie':'JSESSIONID='+cookies_list[0]['value']})
+                table,percent,count = getAttendance(attendancdeJSON, sem)
+            # print(table)
+                if len(table)!=0:    
+                    context = {'table':table, 'percentFinal':  percent, 'countFinal':count, 'userID': userID}
+                else:
+                    context = {'nullData':'No data to display'}
         else:
-          context = {'nullData':'No data to display'}
-        return render(request, "result.html", context)
+            print('demo')
+            
+            context = {'table' : demoData, 'percentFinal' : 86.34, 'countFinal':'196/227', 'userID': 'demo@rknec.edu'}
+        
+    return render(request, "result.html", context)
