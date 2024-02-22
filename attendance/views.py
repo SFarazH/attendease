@@ -108,6 +108,8 @@ def loginDetails(request):
             
             if(username == 'demo@rknec.edu' and password == 'demo@rknec.edu'):
                 context = {'username':username, 'demo':True, 'cookies' : None}
+                user = User(userID = username)
+                user.save()
             else:    
                 options = webdriver.ChromeOptions()
                 prefs = {"profile.managed_default_content_settings.images": 2}
