@@ -131,6 +131,7 @@ a:hover {
   color: black;
   position: relative;
   overflow: hidden;
+  padding: 10px !important;
 }
 
 .spinner-button {
@@ -159,4 +160,8 @@ a:hover {
   font-weight: 500;
   color: white;
   word-spacing: 1;
+}
+
+.tryDemo {
+  color: #d9d9d9;
 }
