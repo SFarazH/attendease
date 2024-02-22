@@ -26,7 +26,7 @@ demoData=[
 {'Name': 'Operating Systems', 'Count': '27/33', 'Percentage': 81.82},
 {'Name': 'Operating Systems Lab', 'Count': '20/20', 'Percentage': 100.0},
 {'Name': 'Systems Lab-II', 'Count': '13/15', 'Percentage': 86.67},
-{'Name': 'Data Science Programming Languages', 'Count': '29/34', 'Percentage': 85.29}
+{'Name': 'Data Science Programming', 'Count': '29/34', 'Percentage': 85.29}
 ]
 
 def index(request):
