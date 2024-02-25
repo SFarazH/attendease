@@ -1,0 +1,167 @@
+body {
+  background-color: #ffffff;
+  font-family: "Gabarito", sans-serif;
+}
+
+.inputForm {
+  font-weight: 400px;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #284b63;
+}
+
+.form {
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  /* color: #fff; */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-control {
+  width: 80%;
+  padding-bottom: 0px;
+}
+
+.inputForm label {
+  display: inline-block;
+  text-align: left;
+  color: #d9d9d9;
+}
+
+input,
+select {
+  margin: 0 auto;
+  margin-bottom: 1em;
+  font-size: 1.3rem;
+  background-color: #e4fde1;
+  color: #d9d9d9;
+}
+
+.errorTxt {
+  color: red;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+  background-color: skyblue;
+}
+
+.fa-github,
+.fa-linkedin-in {
+  font-size: 1.8em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.social {
+  background-color: skyblue;
+  padding-top: 5px;
+  color: black;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.socialTxt {
+  font-size: 1.3em;
+  margin-bottom: 0.2em;
+}
+
+/* FOR Mobile */
+@media only screen and (max-width: 768px) {
+  .brand-logo {
+    width: 45%;
+  }
+  .form-control {
+    width: 80%;
+  }
+}
+
+/* FOR PC */
+@media only screen and (min-width: 768px) {
+  .brand-logo {
+    width: 30%;
+  }
+  .form-control {
+    width: 70%;
+  }
+  .inputForm label {
+    width: 70%;
+  }
+}
+
+.submitBtn {
+  background-color: #d9d9d9;
+  color: black;
+  position: relative;
+  overflow: hidden;
+  padding: 10px !important;
+}
+
+.spinner-button {
+  position: relative;
+}
+
+.overlay {
+  background-color: #d9d9d9;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.spinner-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.username {
+  font-weight: 500;
+  color: white;
+  word-spacing: 1;
+}
+
+.tryDemo {
+  color: #d9d9d9;
+}
