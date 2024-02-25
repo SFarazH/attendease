@@ -137,25 +137,51 @@ def loginDetails(request):
 
 def displayAttendance(request):
     if request.method == 'POST':
-        demo  =request.POST.get('demo')
-        if not demo:
+        userID = request.POST.get('userID')
+        # print('demo = ' + demo)
+        if userID == 'demo@rknec.edu':
+            print('demo user')
+            context = {'table': demoData, 'percentFinal': 86.34, 'countFinal': '196/227', 'userID': 'demo@rknec.edu'}
+        else:
+            print('normal user')
             semform = semForm(request.POST)
-            cookiesStr  =request.POST.get('cookies')
-            userID  =request.POST.get('userID')
-            # print(cookiesStr)
+            cookiesStr = request.POST.get('cookies')
+            userID = request.POST.get('userID')
+            
             if semform.is_valid():
                 cookies_list = ast.literal_eval(cookiesStr)
                 sem = int(semform.cleaned_data['semester'])
-                attendancdeJSON = requests.get('https://rcoem.in/getSubjectOnChangeWithSemId1.json?', headers = {'accept': 'application/json', 'Cookie':'JSESSIONID='+cookies_list[0]['value']})
-                table,percent,count = getAttendance(attendancdeJSON, sem)
-            # print(table)
-                if len(table)!=0:    
-                    context = {'table':table, 'percentFinal':  percent, 'countFinal':count, 'userID': userID}
+                attendancdeJSON = requests.get('https://rcoem.in/getSubjectOnChangeWithSemId1.json?', headers={'accept': 'application/json', 'Cookie': 'JSESSIONID=' + cookies_list[0]['value']})
+                table, percent, count = getAttendance(attendancdeJSON, sem)
+                
+                if len(table) != 0:
+                    context = {'table': table, 'percentFinal': percent, 'countFinal': count, 'userID': userID}
                 else:
-                    context = {'nullData':'No data to display'}
-        else:
-            print('demo')
-            
-            context = {'table' : demoData, 'percentFinal' : 86.34, 'countFinal':'196/227', 'userID': 'demo@rknec.edu'}
-        
+                    context = {'nullData': 'No data to display'}
+
     return render(request, "result.html", context)
+
+# def displayAttendance(request):
+#     if request.method == 'POST':
+#         demo  =request.POST.get('demo')
+#         if not demo:
+#             semform = semForm(request.POST)
+#             cookiesStr  =request.POST.get('cookies')
+#             userID  =request.POST.get('userID')
+#             # print(cookiesStr)
+#             if semform.is_valid():
+#                 cookies_list = ast.literal_eval(cookiesStr)
+#                 sem = int(semform.cleaned_data['semester'])
+#                 attendancdeJSON = requests.get('https://rcoem.in/getSubjectOnChangeWithSemId1.json?', headers = {'accept': 'application/json', 'Cookie':'JSESSIONID='+cookies_list[0]['value']})
+#                 table,percent,count = getAttendance(attendancdeJSON, sem)
+#             # print(table)
+#                 if len(table)!=0:    
+#                     context = {'table':table, 'percentFinal':  percent, 'countFinal':count, 'userID': userID}
+#                 else:
+#                     context = {'nullData':'No data to display'}
+#         else:
+#             print('demo')
+            
+#             context = {'table' : demoData, 'percentFinal' : 86.34, 'countFinal':'196/227', 'userID': 'demo@rknec.edu'}
+        
+#     return render(request, "result.html", context)
