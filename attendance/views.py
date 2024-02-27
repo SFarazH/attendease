@@ -84,12 +84,15 @@ def getAttendance(jsonFile, sem):
             present = jsonFile.json()[i]['presentCount']
             totalPresent += present
             totalAbsent += absent 
-            finalCount = f"{totalPresent}/{totalAbsent+totalPresent}"
-            percent = round((totalPresent/(totalAbsent+totalPresent))*100, 2)
-            if absent+present == 0:
-                percentage = 0
+            if(totalAbsent == 0 or totalPresent == 0):
+                continue
             else:
-                percentage = round((present/(absent+present))*100, 2)    
+                finalCount = f"{totalPresent}/{totalAbsent+totalPresent}"
+                percent = round((totalPresent/(totalAbsent+totalPresent))*100, 2)
+                if absent+present == 0:
+                    percentage = 0
+                else:
+                    percentage = round((present/(absent+present))*100, 2)    
             data.append({
                 'Name' : sub,
                 'Count' : f"{present}/{absent+present}",
