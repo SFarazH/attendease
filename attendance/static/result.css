@@ -14,6 +14,11 @@ html {
   min-height: 100%;
 }
 
+.warning {
+  /* color: #ffbf00 !important; */
+  color: #ffba00 !important;
+}
+
 .success1 {
   color: #029602 !important;
 }

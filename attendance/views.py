@@ -21,8 +21,8 @@ from .models import User
 demoData=[
 {'Name': 'Chemistry', 'Count': '37/41', 'Percentage': 90.24},
 {'Name': 'Chemistry Lab', 'Count': '7/7', 'Percentage': 100.0},
-{'Name': 'Object Oriented Programming', 'Count': '29/35', 'Percentage': 82.86},
-{'Name': 'Object Oriented Programming Lab', 'Count': '7/9', 'Percentage': 77.78},
+{'Name': 'Object Oriented Programming', 'Count': '25/35', 'Percentage': 71.42},
+{'Name': 'Object Oriented Programming Lab', 'Count': '4/9', 'Percentage': 44.44},
 {'Name': 'Operating Systems', 'Count': '27/33', 'Percentage': 81.82},
 {'Name': 'Operating Systems Lab', 'Count': '20/20', 'Percentage': 100.0},
 {'Name': 'Systems Lab-II', 'Count': '13/15', 'Percentage': 86.67},

@@ -4,11 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Result</title>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  />
 
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -19,25 +14,12 @@
     type="text/css"
     href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css"
   />
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css"
-  />
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css"
-  />
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css"
-  />
+
   <link
     href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
     rel="stylesheet"
   />
+
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
@@ -108,7 +90,7 @@
           >
             <div class="media d-flex">
               <div class="media-body text-left">
-                <p class="h2 success1 percentage pFinal">{{percentFinal}} %</p>
+                <p class="h2 percentage pFinal">{{percentFinal}} %</p>
               </div>
 
               <div class="align-self-top float-right">
@@ -118,7 +100,7 @@
             <span class="font-medium-2">{{userID}}</span>
             <div class="progress mt-3 mb-0" style="height: 7px">
               <div
-                class="progress-bar bg-success"
+                class="progress-bar"
                 role="progressbar"
                 style="width: {{percentFinal}}%"
                 aria-valuenow=""
@@ -232,6 +214,7 @@
 
   for (var i = 0; i < percentage.length; i++) {
     percent = parseFloat(percentage[i].textContent);
+    console.log(percent);
 
     if (percent < 60) {
       bar[i].classList.add("bg-danger");
