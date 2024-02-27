@@ -58,10 +58,12 @@ def loginRCOEM(driver, username, password):
 # def select_sem(driver, term_value):
 #         term_dropdown = Select(driver.find_element(By.ID, 'termId'))
 #         term_dropdown.select_by_value(term_value)
+#
 # def click_attendance(driver, label_text):
 #     label_xpath = f"//label[text()='{label_text}']"
 #     label = driver.find_element(By.XPATH, label_xpath)
 #     driver.execute_script("arguments[0].click();", label)
+#
 # def attendance_div(driver):
 #     attendanceDiv = driver.find_element(By.ID, 'attendanceDiv').get_attribute('outerHTML')
 #     return attendanceDiv
