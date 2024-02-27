@@ -141,7 +141,7 @@ def displayAttendance(request):
         # print('demo = ' + demo)
         if userID == 'demo@rknec.edu':
             print('demo user')
-            context = {'table': demoData, 'percentFinal': 86.34, 'countFinal': '196/227', 'userID': 'demo@rknec.edu'}
+            context = {'table': demoData, 'percentFinal': 83.51, 'countFinal': '162/194', 'userID': 'demo@rknec.edu'}
         else:
             print('normal user')
             semform = semForm(request.POST)
