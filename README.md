@@ -1,9 +1,9 @@
 <img src="https://github.com/SFarazH/attendease/assets/75844866/2af9e9b7-3fc1-4950-92df-e54e540aaceb" width='120'>
 
-# AttendEase  🔗 [Live](https://attendease.hopto.org/)
+# AttendEase  
 
-A web app, primarily for RCOEM students to check their attendance in a user friendly interface, without the hassle in less than half the time!
-
+A web app, primarily for RCOEM students to check their attendance in a user friendly interface, without the hassle in less than half the time! <br/> <br/>
+Deployed @ [AttendEase](https://attendease.hopto.org/)
 ## Features
 
 - Responsive design
