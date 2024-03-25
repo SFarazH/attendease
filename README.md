@@ -12,6 +12,8 @@ Deployed @ [AttendEase](https://attendease.hopto.org/)
 - Predict attendance change
 - Demo User for non-RCOEM users 
 
+## Demo:
+![AttendEase Demo](https://github.com/SFarazH/attendease/assets/75844866/10999ae6-b79c-4285-8b97-0a6b4d70629c)
 
 ## Screenshots
 
@@ -48,3 +50,6 @@ Start the server
 ```bash
   py manage.py runserver 
 ```
+
+
+
