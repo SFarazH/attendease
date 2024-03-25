@@ -13,7 +13,7 @@ Deployed @ [AttendEase](https://attendease.hopto.org/)
 - Demo User for non-RCOEM users 
 
 ## Demo:
-![AttendEase Demo](https://github.com/SFarazH/attendease/assets/75844866/10999ae6-b79c-4285-8b97-0a6b4d70629c)
+<img src="https://github.com/SFarazH/attendease/assets/75844866/0e2295d8-4272-463e-a3fc-5ad61ae7c403"  height="550" />
 
 ## Screenshots
 
@@ -50,6 +50,7 @@ Start the server
 ```bash
   py manage.py runserver 
 ```
+
 
 
 
