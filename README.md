@@ -21,7 +21,7 @@ Deployed @ [AttendEase](https://attendease.hopto.org/)
 ### Desktop: 
 ![Desktop View](https://github.com/SFarazH/attendease/assets/75844866/85786bf8-c449-440c-9183-eed6577c159e)
 ### Mobile: 
-![Mobile View](https://github.com/SFarazH/attendease/assets/75844866/62e0d4ac-1080-441c-9458-928ca36c243f)
+<img src="https://github.com/SFarazH/attendease/assets/75844866/62e0d4ac-1080-441c-9458-928ca36c243f"  height="900" />
 
     
 
